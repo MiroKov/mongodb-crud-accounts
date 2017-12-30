@@ -17,3 +17,7 @@ express API for managing accounts in mongo-db (basic CRUD).
 
 <p>"node-dev": "3.1.3"</p>
 
+# MongoDb
+
+To start mongodb server, type <strong><i>mongod [--dbpath <path to data directory>]</i></strong>
+
