@@ -14,7 +14,7 @@ mongodb.MongoClient.connect(url, (error, db) => {
         console.log(error);
         return process.exit(1);
     }
-    app.get('/accounts', (req, res) => {
+    app.get('/accounts', (req, res, next) => {
         db.db('edx-course-db').collection('accounts').find({}, { sort: { _id: -1 } })
             .toArray((error, accounts) => {
                 if (error) return next(error);
@@ -22,7 +22,7 @@ mongodb.MongoClient.connect(url, (error, db) => {
             })
     });
 
-    app.post('/accounts', (req, res) => {
+    app.post('/accounts', (req, res, next) => {
         let newAccount = req.body;
         db.db('edx-course-db').collection('accounts').insert(newAccount, (error, results) => {
             if (error) return next(error);
@@ -30,7 +30,7 @@ mongodb.MongoClient.connect(url, (error, db) => {
         });
     });
 
-    app.put('/accounts/:id', (req, res) => {
+    app.put('/accounts/:id', (req, res, next) => {
         let newAccount = req.body;
         db.db('edx-course-db').collection('accounts').update({ _id: mongodb.ObjectID(req.params.id) }, { $set: req.body },
             (error, results) => {
@@ -39,7 +39,7 @@ mongodb.MongoClient.connect(url, (error, db) => {
             });
     });
 
-    app.delete('/accounts/:id', (req, res) => {
+    app.delete('/accounts/:id', (req, res, next) => {
         db.db('edx-course-db').collection('accounts').remove({ _id: mongodb.ObjectID(req.params.id) }, (errors, results) => {
             if (error) return next(error);
             return res.status(200).send(results);
@@ -47,7 +47,7 @@ mongodb.MongoClient.connect(url, (error, db) => {
     })
 
     app.use(errorHandler());
-    
+
     const port = process.env.port || 3000;
     console.log(`server listening at port ${port}`);
     app.listen(process.env.port || 3000);
