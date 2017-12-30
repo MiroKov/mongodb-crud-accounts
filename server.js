@@ -21,6 +21,14 @@ mongodb.MongoClient.connect(url, (error, db) => {
                 return res.status(200).send(accounts);
             })
     });
+    app.get('/accounts:/id', (req, res, next) => {
+        var id = req.params.id;
+        db.db('edx-course-db').collection('accounts').find({ _id: mongodb.ObjectID(id) })
+            .toArray((error, accounts) => {
+                if (error) return next(error);
+                return res.status(200).send(accounts);
+            })
+    });
 
     app.post('/accounts', (req, res, next) => {
         let newAccount = req.body;
