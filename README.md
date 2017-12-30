@@ -19,5 +19,5 @@ express API for managing accounts in mongo-db (basic CRUD).
 
 # MongoDb
 
-To start mongodb server, type <strong><i>mongod [--dbpath <path to data directory>]</i></strong>
+To start mongodb server, type <strong><i>mongod [--dbpath < path to data directory >]</i></strong>
 
