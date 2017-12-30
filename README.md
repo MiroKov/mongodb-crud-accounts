@@ -9,7 +9,7 @@ express API for managing accounts in mongo-db (basic CRUD).
  <p>"body-parser": "1.18.2",</p>
  <p>   "errorhandler": "1.5.0",</p>
  <p>   "express": "4.16.2",</p>
- <p>   "mongodb": "3.0.1",</p> - in versions <3 dbname is not required, and code will give an error.
+ <p>   "mongodb": "3.0.1" (- in versions <3 dbname is not required, and code will give an error.),</p> 
  <p>   "morgan": "1.9.0"</p>
   
 
