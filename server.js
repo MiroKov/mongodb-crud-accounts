@@ -46,6 +46,8 @@ mongodb.MongoClient.connect(url, (error, db) => {
         })
     })
 
+    app.use(errorHandler());
+    
     const port = process.env.port || 3000;
     console.log(`server listening at port ${port}`);
     app.listen(process.env.port || 3000);
